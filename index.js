@@ -2,7 +2,7 @@ $(function() {
     $('#js-shopping-list-form').submit(event => {
       // this stops the default form submission behavior
       event.preventDefault();
-      const newItem = $(event.currentTarget).find('#shopping-list-entry');
+      const newItem = $(this).find('#shopping-list-entry');
       $("ul").append(
         '<li>' +
         '<span class="shopping-item">' + `${newItem.val()}` + '</span>' +
@@ -17,4 +17,8 @@ $(function() {
       '</li>'
       );
     }); 
+    //remove the entire li if delete is clicked
+    $('ul').on('click', '.shopping-item-delete', function(event) {
+        $(this).closest('li').remove();
+      });
   })
